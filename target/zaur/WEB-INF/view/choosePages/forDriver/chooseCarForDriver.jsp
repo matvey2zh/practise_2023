@@ -61,7 +61,7 @@
 
 <div class="jumbotron feature">
   <div class="container">
-    <h1>Выберите адрес получателя</h1>
+    <h1>Выберите машину</h1>
 
   </div>
 </div>
@@ -75,18 +75,20 @@
   <!-- Feature Row -->
   <div class="row">
     <div class="col-lg-12">
-      <c:forEach var="route" items="${routes}">
+      <c:forEach var="car" items="${cars}">
 
-        <c:url var="selectButton" value="/saveRouteDepartureForOrder">
-          <c:param name="selectRouteDepartureId" value="${route.id}"/>
+        <c:url var="selectButton" value="/addNewDriver2">
+          <c:param name="selectCarId" value="${car.id}"/>
         </c:url>
 
 
         <article class="col-md-4 article-intro">
           <h3>
-              ${route.adress}
+            <a>${car.govermentNumber}</a>
           </h3>
-
+          <p><b>Бренд:</b> ${car.brand}</p>
+          <p><b>Модель:</b> ${car.model}</p>
+          <p><b>Year of release:</b> ${car.yearOfRelease} year</p>
           <p><a class="btn btn-default" onclick="window.location.href = '${selectButton}'">Select</a></p>
         </article>
 

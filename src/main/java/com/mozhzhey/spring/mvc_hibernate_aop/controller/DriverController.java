@@ -44,7 +44,9 @@ public class DriverController {
         for (int j = 0; j < driversList.size(); j++) {
             for (int i = 0; i < driversList.size(); i++) {
                 if (!driversList.get(i).getName().toLowerCase().contains(info.getInfo().toLowerCase()) &&
-                        !Integer.toString(driversList.get(i).getWorkExperience()).toLowerCase().contains(info.getInfo())) {
+                        !Integer.toString(driversList.get(i).getWorkExperience()).toLowerCase().contains(info.getInfo()) &&
+                        !driversList.get(i).getServiceNumber().contains(info.getInfo().toLowerCase())&&
+                        !driversList.get(i).getLastname().contains(info.getInfo().toLowerCase())) {
                     driversList.remove(i);
                 }
 

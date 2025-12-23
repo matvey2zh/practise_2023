@@ -15,7 +15,6 @@
   <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
   <link href="css/custom.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
-  <link href="css/tableStyle.css" rel="stylesheet">
 
 
 </head>
@@ -79,46 +78,46 @@
 </div>
 
 
-<!-- Content -->
-<div class="container">
-
-  <!-- Feature Row -->
-    <table >
-      <thead>
-      <tr><th>Номер заказа</th><th>Дата отправки</th><th>Дата доставки</th><th>Водитель</th><th>Машина</th><th>Состояние заказа</th></tr>
-      </thead>
-    <c:forEach var="order" items="${orders}">
-      <tr>
-          <td>
-            <p>${order.name}</p>
-          </td>
-        <td>
-          <p>${order.dateOfDispatch}</p>
-        </td>
-        <td>
-          <p>${order.dateOfAcceptance}</p>
-        </td>
-        <td>
-          <p>${order.driver.surname} ${order.driver.name} ${order.driver.lastname}</p>
-        </td>
-        <td>
-          <p>${order.driver.driverCar.govermentNumber}</p>
-        </td>
-        <td>
-          <p>${order.orderCondition}</p>
-        </td>
-      </tr>
-
-    </c:forEach>
-    </table>
-  <!-- /.row -->
 
 
+<%--<div class="modal modal1">--%>
+<%--  <div class="modal__main">--%>
+<%--    <h2 class="modal__title">Добавить машину</h2>--%>
+
+<%--    <div class="row">--%>
+<%--      <div class="col-lg-12">--%>
+<%--        <form:form action="saveCar" modelAttribute="car" cssClass="form">--%>
+
+<%--          <form:hidden path="id"/>--%>
+<%--          <div class="form__field">--%>
+<%--            <h3><form:input path="govermentNumber" maxlength="8"  required="true" placeholder="Гос номер"/></h3>--%>
+<%--          </div>--%>
+
+<%--          <div class="form__field">--%>
+<%--          <h3><form:input path="brand" maxlength="15"  required="true" placeholder="Бренд"/></h3>--%>
+<%--          </div>--%>
+
+<%--          <div class="form__field">--%>
+<%--          <h3>Год выпуска <form:input path="yearOfRelease"  maxlength="4" minlength="4"/></h3>--%>
+<%--          </div>--%>
+
+<%--          <div class="form__field">--%>
+<%--          <h3><form:input path="model" maxlength="15" required="true" placeholder="Модель"/></h3>--%>
+<%--          </div>--%>
+
+<%--          <input class="btn-default" type="submit" value="OK"/>--%>
+
+<%--        </form:form>--%>
+<%--      </div>--%>
+<%--    </div>--%>
+
+<%--    <button class="modal__close">&#10006;</button>--%>
+<%--  </div>--%>
+<%--</div>--%>
 
 
 
-</div>
-<!-- /.container -->
+
 
 
 

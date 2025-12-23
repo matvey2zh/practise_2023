@@ -1,7 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<!DOCTYPE html>
+<!DOCTYPE html  "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 
   <title></title>
@@ -13,6 +14,8 @@
 
   <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
   <link href="css/custom.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
 
 </head>
 
@@ -30,6 +33,8 @@
         <span class="icon-bar"></span>
       </button>
 
+
+
     </div>
     <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="navbar">
@@ -46,8 +51,11 @@
         <li>
           <a  onclick="window.location.href = 'routes'">Адреса</a>
         </li>
-        <li class="active">
+        <li>
           <a  onclick="window.location.href = 'cars'">Машины</a>
+        </li>
+        <li class="active">
+          <a  onclick="window.location.href = 'reports'">Отчет</a>
         </li>
       </ul>
 
@@ -61,38 +69,69 @@
 
 <div class="jumbotron feature">
   <div class="container">
-    <h1>Выберите адрес получателя</h1>
+    <h1>Отчеты</h1>
+    <p>Выберите отчет</p>
+    <button class="section__button " onclick="window.location.href = 'timetable'" >Расписание движения</button>
+    <button class="section__button " onclick="window.location.href = 'ordersByOneDriver'" >Кол-во рейсов определенного водителя</button>
 
   </div>
 </div>
 
+
 <!-- Content -->
 <div class="container">
+  <hr>
+  <h2 class="page-header">ssss</h2>
+  <h2 class="page-header">ssss</h2>
+  <h2 class="page-header">ssss</h2>
+  <h2 class="page-header">ssss</h2>
+  <h2 class="page-header">ssss</h2>
+  <h2 class="page-header">ssss</h2>
+  <!-- Heading -->
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Существующие машины</h1>
+<%--      <form:form action="searchInfoInCars" modelAttribute="searchInfo">--%>
+<%--        <form:input path="info"></form:input>--%>
+<%--        <input class="btn-default" type="submit" value="OK"/>--%>
+<%--      </form:form>--%>
 
-
+<%--      <p>Вы можете изменять или удалять записи в любой момент.</p>--%>
+<%--      <button class="btn btn-default" onclick="window.location.href = 'carsSortByYearUp'">Cортировать по дате ↑</button>--%>
+<%--      <button class="btn btn-default" onclick="window.location.href = 'carsSortByYearDown'">Cортировать по дате ↓</button>--%>
+<%--      <button class="btn btn-default" onclick="window.location.href = 'carsSortByModelUp'">Cортировать по модели ↑</button>--%>
+<%--      <button class="btn btn-default" onclick="window.location.href = 'carsSortByModelDown'">Cортировать по модели ↓</button>--%>
+    </div>
+  </div>
   <!-- /.row -->
+
+
 
   <!-- Feature Row -->
   <div class="row">
-    <div class="col-lg-12">
-      <c:forEach var="route" items="${routes}">
+    <c:forEach var="car" items="${cars}">
 
-        <c:url var="selectButton" value="/saveRouteDepartureForOrder">
-          <c:param name="selectRouteDepartureId" value="${route.id}"/>
+        <c:url var="updateButton" value="/updateCar">
+            <c:param name="carId" value="${car.id}"/>
         </c:url>
 
+      <c:url var="deleteCarButton" value="/deleteCar">
+        <c:param name="carId" value="${car.id}"/>
+      </c:url>
 
-        <article class="col-md-4 article-intro">
-          <h3>
-              ${route.adress}
-          </h3>
+      <article class="col-md-4 article-intro">
+        <h3>
+          <a>${car.govermentNumber}</a>
+        </h3>
+        <p><b>Бренд:</b> ${car.brand}</p>
+        <p><b>Модель:</b> ${car.model}</p>
+        <p><b>Год выпуска:</b> ${car.yearOfRelease} year</p>
 
-          <p><a class="btn btn-default" onclick="window.location.href = '${selectButton}'">Select</a></p>
-        </article>
+        <p><a class="btn btn-default "  onclick="window.location.href = '${updateButton}'">Изменить</a></p>
+        <p><a class="btn btn-default" onclick="window.location.href = '${deleteCarButton}'">Удалить</a></p>
 
-
-      </c:forEach>
-    </div>
+      </article>
+    </c:forEach>
   </div>
   <!-- /.row -->
 
@@ -132,17 +171,10 @@
 </footer>
 
 
-<!-- jQuery -->
-<script src="js/jquery-1.11.3.min.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
 
-<!-- IE10 viewport bug workaround -->
-<script src="js/ie10-viewport-bug-workaround.js"></script>
 
-<!-- Placeholder Images -->
-<script src="js/holder.min.js"></script>
+<script src="js/script.js"></script>
 
 </body>
 

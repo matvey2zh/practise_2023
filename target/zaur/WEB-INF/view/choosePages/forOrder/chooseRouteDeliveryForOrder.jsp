@@ -61,7 +61,7 @@
 
 <div class="jumbotron feature">
   <div class="container">
-    <h1>Выберите адрес получателя</h1>
+    <h1>Выберите адрес отправителя</h1>
 
   </div>
 </div>
@@ -77,7 +77,7 @@
     <div class="col-lg-12">
       <c:forEach var="route" items="${routes}">
 
-        <c:url var="selectButton" value="/saveRouteDepartureForOrder">
+        <c:url var="selectButton" value="/saveRouteDeliveryForOrder">
           <c:param name="selectRouteDepartureId" value="${route.id}"/>
         </c:url>
 

@@ -49,6 +49,9 @@
         <li class="active">
           <a  onclick="window.location.href = 'cars'">Машины</a>
         </li>
+        <li >
+          <p id="currentDispatcher"></p>
+        </li>
       </ul>
 
 
@@ -61,7 +64,7 @@
 
 <div class="jumbotron feature">
   <div class="container">
-    <h1>Выберите адрес получателя</h1>
+    <h1>Выберите диспетчера</h1>
 
   </div>
 </div>
@@ -75,17 +78,18 @@
   <!-- Feature Row -->
   <div class="row">
     <div class="col-lg-12">
-      <c:forEach var="route" items="${routes}">
+      <c:forEach var="disp" items="${dispatchers}">
 
-        <c:url var="selectButton" value="/saveRouteDepartureForOrder">
-          <c:param name="selectRouteDepartureId" value="${route.id}"/>
+        <c:url var="selectButton" value="/saveDispatcherForOrder">
+          <c:param name="selectDispId" value="${disp.id}"/>
         </c:url>
 
 
         <article class="col-md-4 article-intro">
           <h3>
-              ${route.adress}
+            <a>${disp.surname} ${disp.name}</a>
           </h3>
+          <p><b>Телефонный номер:</b> ${disp.phoneNumber}</p>
 
           <p><a class="btn btn-default" onclick="window.location.href = '${selectButton}'">Select</a></p>
         </article>

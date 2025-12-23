@@ -13,6 +13,7 @@
 
   <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
   <link href="css/custom.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
 </head>
 
@@ -61,7 +62,7 @@
 
 <div class="jumbotron feature">
   <div class="container">
-    <h1>Выберите адрес получателя</h1>
+    <h1>Изменение машины</h1>
 
   </div>
 </div>
@@ -69,29 +70,39 @@
 <!-- Content -->
 <div class="container">
 
-
+  <!-- Heading -->
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Основная информация</h1>
+    </div>
+  </div>
   <!-- /.row -->
 
   <!-- Feature Row -->
   <div class="row">
     <div class="col-lg-12">
-      <c:forEach var="route" items="${routes}">
+      <form:form action="saveCar" modelAttribute="car" cssClass="form">
 
-        <c:url var="selectButton" value="/saveRouteDepartureForOrder">
-          <c:param name="selectRouteDepartureId" value="${route.id}"/>
-        </c:url>
+        <form:hidden path="id"/>
+        <div class="form__field">
+          <h3><form:input path="govermentNumber" maxlength="8"  required="true" placeholder="Гос номер"/></h3>
+        </div>
 
+        <div class="form__field">
+          <h3><form:input path="brand" maxlength="15"  required="true" placeholder="Бренд"/></h3>
+        </div>
 
-        <article class="col-md-4 article-intro">
-          <h3>
-              ${route.adress}
-          </h3>
+        <div class="form__field">
+          <h3>Год выпуска <form:input path="yearOfRelease"  maxlength="4" minlength="4"/></h3>
+        </div>
 
-          <p><a class="btn btn-default" onclick="window.location.href = '${selectButton}'">Select</a></p>
-        </article>
+        <div class="form__field">
+          <h3><form:input path="model" maxlength="15" required="true" placeholder="Модель"/></h3>
+        </div>
 
+        <input class="btn-default" type="submit" value="OK"/>
 
-      </c:forEach>
+      </form:form>
     </div>
   </div>
   <!-- /.row -->
